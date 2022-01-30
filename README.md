@@ -152,14 +152,16 @@ Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 
 __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
 
-- [ ] __GET /countries__:
+- ***back lista,[ ] __GET /countries__:
   - En una primera instancia deberán traer todos los países desde restcountries y guardarlos en su propia base de datos y luego ya utilizarlos desde allí (Debe almacenar solo los datos necesarios para la ruta principal)
   - Obtener un listado de los paises.
 - [ ] __GET /countries/{idPais}__:
   - Obtener el detalle de un país en particular
   - Debe traer solo los datos pedidos en la ruta de detalle de país
   - Incluir los datos de las actividades turísticas correspondientes
-- [ ] __GET /countries?name="..."__:
+
+  
+### _ruta backlista_ [ ] __GET /countries?name="..."__:
   - Obtener los países que coincidan con el nombre pasado como query parameter (No necesariamente tiene que ser una matcheo exacto)
   - Si no existe ningún país mostrar un mensaje adecuado
 - [ ] __POST /activity__:
