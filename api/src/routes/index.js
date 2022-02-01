@@ -1,28 +1,32 @@
 const { Router, response } = require('express');
 const axios = require('axios');
+const { Op, where } = require('sequelize');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const { Country, Activity } = require('../db');
 const router = Router();
 
-// Configurar los routers https://restcountries.com/v3.1/name/{name}
-// Ejemplo: router.use('/auth', authRouter);//https://restcountries.com/v3.1/all
+//creo database contry con info from api
+
 const apiInfo = async () => {
     const api = await axios.get('https://restcountries.com/v3.1/all');
     const info = await api.data.map(country => {
-        return {
-            id: country.cioc,
-            name: country.name.common,
-            flag: country.flags.png,
-            continent: country.region,
-            subregion: country.subregion,
-            capital: country.capital,
-            area: country.area,
-            population: country.population,
-        }
-    });
-    return (info);
-};
+        Country.findOrCreate({
+            where: {
+                id: country.cca3,
+                name: country.name.common,
+                flag: country.flags.png,
+                continent: country.region,
+                subregion: (country.subregion ? country.subregion : typeof country.subregion),// country.subregion,
+                capital: country.capital ? country.capital[0] : 'There is not a Capital',//country.capital,
+                area: country.area,
+                population: country.population
+            }
+        })
+    })
+}
+
+// creo dabatase activity
 const dbInfo = async () => {
     return await Country.findAll({
         include: {
@@ -34,67 +38,106 @@ const dbInfo = async () => {
         }
     })
 };
-const AllInfo = async () => {
-    const api = await apiInfo();
-    const db = await dbInfo();
-    const infoTotal = api.concat(db);
-    return infoTotal;
-};
-//console.log('info de la api :'+ apiInfo());
+
 //GET /countries?name="..."
 router.get('/countries', async (req, res) => {
-    const name = req.query.name;
-    let countriesTotal = await apiInfo();
+    const { name } = req.query;
     if (name) {
-        countriesTotal = countriesTotal.filter(country => country.name.toLowerCase().includes(name.toLowerCase()));
-        countriesTotal ?
-            res.status(200).json(countriesTotal) :
-            res.status(404).json({ message: 'No se encontraron países con ese nombre' });
+        const dbCountry = await Country.findAll({
+            where: { name: { [Op.iLike]: `%${name}%` } }
+        })
+
+        return res.send(dbCountry)
     }
-    else {
-        res.status(200).json(countriesTotal);
+
+    let dbCountries = await dbInfo();
+
+    if (dbCountries.length) {
+        res.send(dbCountries);
+
+    } else {
+        const info = await getApi();
+        info.forEach(c => {
+            Country.findOrCreate({
+                where: {
+                    id: c.id,
+                    name: c.name,
+                    image: c.image,
+                    continent: c.continent,
+                    capital: c.capital,
+                    subregion: c.subregion,
+                    area: c.area,
+                    population: c.population,
+                }
+            })
+        })
+
+        dbCountries = await getDB();
+        res.json(dbCountries);
     }
 });
 
-//[ ] GET /countries/{idPais}:  
-router.get('/countries/:id', async (req, res) => {
-    const { id } = req.params;
-    const dbCountry = await Country.findAll({
-        where: { id: id.toUpperCase() },
+//[ ] GET /countries/{idPais}: 
+//Devuelve toda la información de un país.
+
+router.get("/countries/:id", async (req, res) => {
+    const countryId = req.params.id;
+
+    const countryById = await Country.findByPk(countryId, {
         include: {
             model: Activity,
-            attributes: ['name', 'difficulty', 'duration', 'season', 'id'],
-            through: {
-                attributes: []
-            }
-        }
-    })
+        },
+    });
 
-    dbCountry.length
-        ? res.status(200).send(dbCountry)
-        : res.status(404).send('Country not found')
-
+    return res.send(countryById);
 });
 
-router.post('/activity',async (req,res) => { 
-    let{
-        name,
-        difficulty,
-        duration,
-        season,
-    } = req.body;
-    let activityCreated = await Activity.create({
-        name,
-        difficulty,
-        duration,
-        season,
-    });
-    let dbCountry = await Country.findAll({
-        where: { name: country },
-    })
-    activityCreated.addCountry(dbCountry);
-    res.status(200).send('activity Created');
-} )
+// .post  '/activity'
+//////////////////////////////////
+
+router.post("/activity", async (req, res) => {
+    const { name, difficulty, duration, season, countryId } = req.body
+    try {
+        /* if (!name || !countryId || countryId.length() !== 3 || difficulty % 2 !== 0 || difficulty < 1 || difficulty > 5 || !season) {
+           return res.status(400).send('Error: Missing parameters or wrong format,countryId most be 3 country first leters, difficulty must be an even number between 1 and 5, season must be a string');
+       }  */
+
+        const activityCreated = await Activity.create({
+            name: name.toLowerCase(),
+            difficulty: difficulty, //.toString(),//un string entro 1-5
+            duration: parseInt(duration),
+            season: season.toLowerCase() // summer, fall, winter, spring
+        })
+        const countryDb = await Country.findAll({
+            where: { id: countryId.toUpperCase() } // 3 letras upercase
+
+        })
+        activityCreated.addCountry(countryDb)
+        res.send("Creacion Exitosa")
+    }
+
+    catch (error) {
+        console.error(error);
+        res.send(error);
+    }
+})
+
+//////////////////////////////////
 
 
+// get /activity
+
+router.get('/activity', async function (req, res) {
+    try {
+        const activities = await Activity.findAll()
+        res.send(activities)
+    } catch (error) {
+        //next(error)
+        console.log(error)
+    }
+})
+
+
+
+apiInfo();
 module.exports = router;

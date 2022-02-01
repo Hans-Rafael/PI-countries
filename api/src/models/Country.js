@@ -7,7 +7,7 @@ module.exports = (sequelize) => {
     id: {type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true,
-        validate:{is:/[:a-z,A-Z:]{3}/i}
+        //validate:{is:/[:A-Z:]{3}/i}
         },
     name: {
         type: DataTypes.STRING,
@@ -22,6 +22,9 @@ module.exports = (sequelize) => {
     allowNull: false,},
     area:{ type: DataTypes.INTEGER,},
     population:{type: DataTypes.INTEGER,},
-
+  },
+  {
+    timestamps: false
+         
 });
 };
