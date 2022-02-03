@@ -86,7 +86,7 @@ __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estil
 - [ ] Express
 - [ ] Sequelize - Postgres
 
-#### Frontend
+# Frontend
 
 Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
 
@@ -124,7 +124,7 @@ __Ruta de creación de actividad turística__: debe contener
 
 > Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre de la actividad no pueda contener símbolos, que la duración no pueda exceder determinado valor, etc.
 
-#### Base de datos
+## Base de datos
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
@@ -146,7 +146,7 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
 
 La relación entre ambas entidades debe ser de muchos a muchos ya que un país puede contener varias actividades turísticas y, a su vez, una actividad turística puede darse en múltiples países. Por ejemplo una actividad podría ser "Ski" que podría ocurrir en Argentina y también en Estados Unidos, pero a su vez Argentina podría también incluir "Rafting".
 
-#### Backend
+## _Backend_
 
 Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 
