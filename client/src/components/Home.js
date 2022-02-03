@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { render } from 'react-dom';
 import { getCountries,filterContinent,getActivities,filterActivity,
-    orderName,orderPopulation,postActivity,deleteActivity,
-    getName,getDetail } from '../actions';
+        orderName,orderPopulation } from '../actions';
 import { Link } from 'react-router-dom';
 import CardPais from './CardPais';
 import SearchBar from './SearchBar';

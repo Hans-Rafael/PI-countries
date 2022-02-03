@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { postActivity } from '../actions';
 
-import style from './CreateActivity.module.css';
-/* import meditation from './styles/images/meditation.png'
-import relax from './styles/images/relax.png'
-import button from './styles/images/button.png'; */
+//import style from './CreateActivity.module.css';
+/* import meditation from './s/images/meditation.png'
+import relax from './s/images/relax.png'
+import button from './s/images/button.png'; */
 
 const validation = (input) => {
     let errors = {};
@@ -28,7 +28,7 @@ const validation = (input) => {
     }
 }
 
-const Creater = () => {
+const CreateActivity = () => {
 
     const dispatch = useDispatch();
     const unOrder = useSelector(state => state.countries);
@@ -71,7 +71,7 @@ const Creater = () => {
             })
         } */
     }
-    hanndleRemove = name => {
+    const hanndleRemove = (name) => {
         setInput({
             ...input,
             countryId: input.countryId.filter(id => id !== name)
@@ -80,6 +80,7 @@ const Creater = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         if (input.name && input.countryId.length) {
             dispatch(postActivity(input));
             setSuccess(true);
@@ -98,20 +99,20 @@ const Creater = () => {
     }
 
     return (
-        <div className={style.container}>
+        <div >
             <Link to='/home'>
                 <div >
-                    <img src={button} alt=" imagen del boton" />
+                    <img  alt=" imagen del boton" />
                 </div>
             </Link>
             <h1 >Tourist activity creation form</h1>
 
             {/*  <form onSubmit={handleSubmit}> */}
-            <form className={style.form} onSubmit={e => handleSubmit(e)}>
+            <form  onSubmit={e => handleSubmit(e)}>
 
-                {errors.name && <p className={style.error}>{errors.name}</p>}
+                {errors.name && <p >{errors.name}</p>}
                 <input
-                    className={style.input}
+                    
                     onChange={e => handleChange(e)}
                     type="text"
                     value={input.name}
@@ -119,13 +120,13 @@ const Creater = () => {
                     placeholder="Name"
                 />
 
-                <div className={style.difficulty}>
+                <div >
                     <label>Difficulty:{input.difficulty} </label>
                 </div>
-                <div className={style.contRange}>
-                    <div className={style.rangeMin}>0</div>
+                <div >
+                    <div >0</div>
                     <input
-                        className={style.inRange}
+                        
                         type='range'
                         min='1'
                         max='5'
@@ -133,13 +134,13 @@ const Creater = () => {
                         name='difficulty'
                         onChange={e => handleChange(e)}
                     />
-                    <div className={style.rangeMax}>5</div>
+                    <div >5</div>
 
                 </div>
-                {errors.difficulty && <p className={style.error}>{errors.difficulty}</p>}
+                {errors.difficulty && <p >{errors.difficulty}</p>}
 
                 <input
-                    className={style.inputDuration}
+                    
                     type="number"
                     name="duration"
                     value={input.duration}
@@ -147,7 +148,7 @@ const Creater = () => {
                     placeholder="Duration"
                 />
 
-                <div className={style.season}>
+                <div >
                     <label>Season:</label>
                     <select name="season" onChange={e => handleChange(e)}>
                         <option selected disables >***</option>
@@ -158,7 +159,7 @@ const Creater = () => {
                     </select>
                 </div>
 
-                <div className={style.country}>
+                <div >
                     <label>CountryId</label>
                     <select name="countryId" onChange={e => handleCountry(e)}>
                         <option selected disables >***</option>
@@ -170,13 +171,13 @@ const Creater = () => {
                     </select>
                 </div>
 
-                {errors.country && <p className={style.errors}>
+                {errors.country && <p>
                     {errors.country}</p>}
 
-                <div className={style.countryList}>{
+                <div >{
                     input.countryId.length ?
                         input.countryId.map(id => (
-                            <div key={id} className={style.countryListItem}>
+                            <div key={id} >
                                 <p>{countries.find(country => country.id === id).name}{id}</p>
                                 <span onClick={() => hanndleRemove(id)}> X</span>
                             </div>
@@ -187,8 +188,7 @@ const Creater = () => {
                 <button type="submit" > Submit Activity</button>
 
                 {success ?
-                    <div className={style.success}>
-                        <img src={relax} alt="imagen de felicidad" />
+                    <div >
                         Activity created successfully!
                     </div>
                     : null
@@ -197,3 +197,5 @@ const Creater = () => {
         </div>
     )
 }
+
+//export default CreateActivity;
