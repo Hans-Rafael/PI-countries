@@ -1,0 +1,37 @@
+.container {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    height: 50%;
+    width: 80%;
+    border: none;
+    background-color: rgb(100, 100, 150);
+    border-radius: 30px;
+    padding-left: 4%;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-weight:bold;
+}
+
+.input::placeholder {
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-weight:bold;
+}
+
+.input:focus {
+    outline: none;
+    background-color: lightskyblue
+}
+
+.button {
+    width: 70%;
+}
+
+.submit:hover {
+    transform: rotate(90deg);
+}

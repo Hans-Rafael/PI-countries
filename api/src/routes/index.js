@@ -82,6 +82,7 @@ router.get('/countries', async (req, res) => {
 
 router.get("/countries/:id", async (req, res) => {
     const countryId = req.params.id;
+    console.log(countryId);
 
     const countryById = await Country.findByPk(countryId, {
         include: {

@@ -1,0 +1,109 @@
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+ 
+/*   background-image: url("https://www.lavanguardia.com/r/GODO/LV/p6/WebSite/2019/05/20/Recortada/img_lbernaus_20190520-175441_imagenes_lv_terceros_istock-939960926-kTQH-U462364081636zFG-992x558@LaVanguardia-Web.jpg"); */
+  background-image: url("./images/backPg.jpg");
+  background-size: cover;
+  
+}
+
+.navbar {
+    width: 90%;
+    height: 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchSection {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+.butContain {
+    background-color: rgb(100, 100, 150);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: .5s;
+    cursor: pointer;
+    margin-left: 1%;
+}
+
+.button {
+    width: 70%;
+}
+
+.butContain:hover {
+    transform: rotate(-300deg);
+}
+
+.sortSection {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.createSection {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.create {
+    text-decoration: none;
+    font-weight: bolder;
+    color: rgb(100, 100, 150);
+    height: 60%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.create:hover {
+    background-color:lightskyblue;
+    color: #fff;
+}
+
+.cardsContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    
+} 
+
+.card {
+    margin: 0 2%;
+}
+
+.title{
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(100, 100, 150);
+}
+

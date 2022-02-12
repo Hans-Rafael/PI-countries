@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+#name {
+  background-color: #131c38;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 12px 30px;
+  width: 100%;
+  display: block;
+  text-align: left;
+  cursor: text;
+}
+
+#name::placeholder {
+  color: white;
+}
+
+.invisible {
+  color: transparent;
+}
+
+.justduration {
+  margin-top: 15px;
+}
+
+.head {
+  color: black;
+  font-family: "ge body";
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.headd {
+  color: black;
+  font-family: "ge body";
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.heads {
+  color: black;
+  font-family: "ge body";
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.fknselect {
+  width: 100%;
+  background-color: #131c38;
+  border: none;
+  height: 43px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 12px 30px;
+  border: none;
+  outline: none;
+}
+
+.fknselect option {
+  background-color: #131c38;
+  border: none;
+  height: 43px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 12px 30px;
+  border: none;
+  outline: none;
+}
+
+.idk {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.each {
+  margin: 5px;
+  padding: 5px;
+  height: 180px;
+  background-color: #131c38;
+}
+
+.bn3733 {
+  border: none;
+  outline: none;
+  font-family: "bebas neue", sans-serif;
+  letter-spacing: 5px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #000;
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.flagname {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+
+  font-size: 15px;
+}
+
+.flagmini {
+  width: 100%;
+  height: 80px;
+  margin-top: 3px;
+}
+
+.errorP {
+  color: #000;
+  font-size: 12px;
+  margin-top: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.nav {
+  background: linear-gradient(180deg, #131c38 10%, #2b385c 100%);
+  margin-bottom: 3%;
+}
+
+.bn3639 {
+  padding-right: 0.7rem;
+  padding-left: 0.7rem;
+  font-family: "bebas neue", sans-serif;
+  letter-spacing: 5px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  height: 33px;
+  border: 0.3rem solid transparent;
+  border-radius: 3rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.bn39 {
+  border-color: transparent;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+}
+
+.bn39:hover {
+  transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+}
+
+.inputss {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #2b385c;
+}
+
+.nameduration {
+  grid-area: 1 / 1 / 2 / 2;
+  width: 100%;
+  height: 100%;
+}
+.difficultyForm {
+  grid-area: 1 / 2 / 2 / 3;
+  width: 100%;
+  height: 100%;
+}
+
+.seasonForm {
+  grid-area: 1 / 3 / 2 / 4;
+  width: 100%;
+  height: 100%;
+}
+
+.selcoun {
+  grid-area: 1 / 4 / 2 / 6;
+  width: 100%;
+  height: 100%;
+}
+
+.theones {
+  margin-top: 2%;
+  width: 100%;
+}
+
+.inputGroup {
+  background-color: #131c3888;
+  display: block;
+  margin: 10px 0;
+  position: relative;
+}
+.inputGroup label {
+  padding: 12px 30px;
+  width: 100%;
+  display: block;
+  text-align: left;
+  color: #aaa;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 200ms ease-in;
+  overflow: hidden;
+}
+.inputGroup label:before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  content: "";
+  background-color: #131c38;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale3d(1, 1, 1);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  z-index: -1;
+}
+.inputGroup label:after {
+  width: 32px;
+  height: 32px;
+  content: "";
+  border: 2px solid #d1d7dc;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+  background-repeat: no-repeat;
+  background-position: 2px 3px;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+.inputGroup input:checked ~ label {
+  color: #fff;
+}
+.inputGroup input:checked ~ label:before {
+  transform: translate(-50%, -50%) scale3d(56, 56, 1);
+  opacity: 1;
+}
+.inputGroup input:checked ~ label:after {
+  background-color: #2b385c;
+  border-color: #2b385c;
+}
+.inputGroup input {
+  width: 32px;
+  height: 32px;
+  order: 1;
+  z-index: 2;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  visibility: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+.btnsubmit {
+  padding: 60px;
+}
+
+.bn5978 {
+  padding-right: 0.7rem;
+  padding-left: 0.7rem;
+  font-family: "bebas neue", sans-serif;
+  letter-spacing: 5px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+  height: 43px;
+  width: 40%;
+  margin-top: 0px;
+  border: 0.3rem solid transparent;
+  border-radius: 3rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.bn78 {
+  border-color: transparent;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+}
+
+.bn78:hover {
+  transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+}
+
