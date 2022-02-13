@@ -7,7 +7,7 @@ const LandingPage = () => {
         <div className={styles.world} >
             <div className={styles.container} >
                 <h1>World Turitic Activity Ornanizer</h1>
-                <Link to='/home'>
+                <Link to='/countries'>
                     <button className={styles.button} >WELLCOME</button>
                 </Link>
             </div>
@@ -21,7 +21,7 @@ const LandingPage = () => {
        <main>
            <h1>actyvity organizer for turist</h1>
            <selection>
-               <Link to ="/home"> WELLCOME</Link>
+               <Link to ="/countries"> WELLCOME</Link>
            </selection>
        </main>
    }

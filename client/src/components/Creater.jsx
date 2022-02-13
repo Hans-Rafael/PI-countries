@@ -8,7 +8,7 @@ import button from './styles/images/button.png';
 
 
  
-const validation = (input) => {
+const validation = (input) => { // input es el estado local
     let errors = {};
 //!/^.{3}$/ para nameID or !input.country.length >2 
     if (!input.name) {
@@ -71,9 +71,10 @@ const Creater = () => {
         if (input.name && input.difficulty && input.country.length) {
             dispatch(postActivity(input));
             setSuccess(true);
+            //alert("Activity created!"); //No me gusta como queda con alert!
             setInput({
                 name: "",
-                difficulty: 1,
+                difficulty: 0,
                 duration: "",
                 season: "---",
                 country: []
@@ -84,12 +85,12 @@ const Creater = () => {
                 [e.target.name]: e.target.value
             }));
         }
-
+        //window.location.reload(); //queda mejor sin Refrescar la pagina en este caso
     }
 
     return (
         <div className={styles.container}>
-            <Link to='/home'>
+            <Link to='/countries'>
                 <div className={styles.butContain}>
                     <img className={styles.button} src={button} alt="" />
                 </div>

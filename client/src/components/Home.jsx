@@ -88,15 +88,11 @@ const Home = () => {
 
     const handleActivity = e => {
         dispatch(filterActivity(e.target.value));
-        setRender({
-            ...render, act: e.target.value,
-            continent: 'All', population: 'Population',
-            alpha: 'Alphabetic'
-        });
+        setRender({ ...render, act: e.target.value, alpha: 'Alphabetic', population: 'Population' });
         setCurrPage(1);
     }
     //
-    const toggleThemeChange = () => {
+   /*  const toggleThemeChange = () => {
         if (checked === false) {
             localStorage.setItem("theme", "dark");
             setChecked(true);
@@ -104,7 +100,7 @@ const Home = () => {
             localStorage.setItem("theme", "light");
             setChecked(false);
         }
-    };
+    }; */
 
     ////////// Input ////////////
 

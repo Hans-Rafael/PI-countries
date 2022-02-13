@@ -62,7 +62,7 @@ export const orderPopulation = payload =>{
     }
 }
 
-export const getName = name => {
+export const getName = (name) => {
     return async (dispatch)=>{
         try {
             let json = await axios(`http://localhost:3001/countries?name=${name}`);

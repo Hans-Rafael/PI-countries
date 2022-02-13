@@ -5,14 +5,14 @@ import { getDetail } from '../actions';///3 nuevos
 //import {Creater} from './Creater';
 //import axios from 'axios';
 
-import styles from './styles/Creater.module.css';
+import styles from './styles/Details.module.css';
 import button from './styles/images/button.png';
 
 const Details = () => {
 
     const params = useParams();
     const dispatch = useDispatch();
-    const detail = useSelector((state) => state.detail)
+    const detail = useSelector((state) => state.detail);
     console.log('soy el params de DEtails components:', params);// recive el id del pais
 
     useEffect(() => {
@@ -23,16 +23,13 @@ const Details = () => {
     console.log('ARRAY detail.Activities en DEtails componets: ', detail.activities);
 
     return (
-        <div >
-             {/* <div className={styles.container}>
-                <Link to='/home'>
-                    <div className={styles.butContain}>
-                        <img className={styles.button} src={button} alt=" img button not found" />
-                    </div>
-                </Link>
-            </div>  */}
+        <div className={styles.container}>
 
-            
+            <button className={styles.button}>
+                <Link to='/countries'>
+                    Return </Link>
+            </button>
+
             <h2>{detail.name}</h2>
             <div >
                 <img src={detail.flag} alt="Flag" />
@@ -51,7 +48,7 @@ const Details = () => {
             <h3>Area: {detail.area} Km2</h3>
             <h3>Population: {detail.population}</h3>
             <h3>Activities: </h3>
-             <ul>{detail.activities?.length?
+            <ul>{detail.activities?.length ?
                 detail.activities.map(act => (
                     <li key={act.id}>
                         {`${act.name} - `}
@@ -61,7 +58,7 @@ const Details = () => {
                     </li>
                 ))
                 : 'No activities for this country'
-            }</ul> 
+            }</ul>
         </div>
 
     )

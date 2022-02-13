@@ -29,17 +29,19 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
               activities: [...actSet]
-               
             }
 
 
         case 'FILTER_ACT':
             const all = state.countries;
-            const filter = all.filter(country => {
+            const filter = all.filter /* (c => {
+                c.activities && c.activities.map(a => a.name).includes(action.payload)
+            })  */
+            ( country => {
                 let countryAct = country.activities.map(el => el.name);
                 return countryAct.includes(action.payload) ? country
                     : null
-            })
+             })
             return {
                 ...state,
                 renderCountries: filter

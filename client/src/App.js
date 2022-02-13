@@ -10,7 +10,7 @@ function App() {
     <R>
       <Routes>
           <Route exact path='/' element={<LandingPage />} />
-          <Route path='/home' element={<Home />} />
+          <Route path='/countries' element={<Home />} />
           <Route path='/countries/:id' element={<Details />} />
           <Route path='/activity' element={<Creater />} />
       </Routes>
