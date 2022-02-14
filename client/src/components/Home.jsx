@@ -20,10 +20,12 @@ const Home = () => {
     const dispatch = useDispatch();
     const countries = useSelector(state => state.renderCountries);
     const activities = useSelector(state => state.activities);
-    //
-    const [checked, setChecked] = useState(
+    // mejor retiro el modo nocturno por ahora
+    /* const [checked] = useState(
         localStorage.getItem("theme") === "dark" ? true : false
-    );
+     
+    ); */
+
 
 
     /////// PAGINADO ////////////////////////////////////////////
@@ -50,12 +52,13 @@ const Home = () => {
         dispatch(getCountries());
         dispatch(getActivities());
     }
-    ///
-    useEffect(() => {
+    /// modo nocturno
+    /* useEffect(() => {
         document
             .getElementsByTagName("HTML")[0]
             .setAttribute("data-theme", localStorage.getItem("theme"));
-    }, [checked]);
+    }, [checked]); */
+
     //////////ORDENADORES Y FILTERS////////////////////////////
 
     const [render, setRender] = useState({
@@ -92,103 +95,105 @@ const Home = () => {
         setCurrPage(1);
     }
     //
-   /*  const toggleThemeChange = () => {
-        if (checked === false) {
-            localStorage.setItem("theme", "dark");
-            setChecked(true);
-        } else {
-            localStorage.setItem("theme", "light");
-            setChecked(false);
-        }
-    }; */
+    /*  const toggleThemeChange = () => {
+         if (checked === false) {
+             localStorage.setItem("theme", "dark");
+             setChecked(true);
+         } else {
+             localStorage.setItem("theme", "light");
+             setChecked(false);
+         }
+     }; */
 
     ////////// Input ////////////
 
     return (
-        
-            <div className={styles.home}>
-                <nav className={styles.navbar}>
-                    <div className={styles.searchSection}>
-                        <Search />
 
-                        <div onClick={e => handleClick(e)}
-                            className={styles.butContain}>
-                            <img className={styles.button} src={refresh} alt="" />
-                        </div>
-                        <div>Reload</div>
+        <div className={styles.home}>
+            <nav className={styles.navbar}>
+                <div className={styles.searchSection}>
+                    <Search />
+
+                    <div onClick={e => handleClick(e)}
+                        className={styles.butContain}>
+                        <img className={styles.button} src={refresh} alt="" />
                     </div>
+                    <div>Reload</div>
+                </div>
 
-                    <div className={styles.sortSection}>
-                        <select onChange={e => handleContinent(e)} value={render.continent}  >
-                            <option value="wrld">Continets</option>     {/* //All */}
-                            <option value="Americas">Americas</option>
-                            <option value="Africa">Africa</option>
-                            <option value="Asia">Asia</option>
-                            <option value="Antarctic">Antartic</option>
-                            <option value="Europe">Europe</option>
-                            <option value="Oceania">Oceania</option>
-                        </select>
+                <div className={styles.sortSection}>
 
-                        <select onChange={e => handleActivity(e)} value={render.act} >
-                            <option selected disabled>Activities</option>
-                            {activities.map(act => (
-                                <option key={act} value={act}>
-                                    {act}
-                                </option>
-                            ))}
-                        </select>
+                    <select onChange={e => handleContinent(e)} value={render.continent} defaultValue="">
+                        <option value="" disabled> Choose a Continet ... </option>
+                        <option value="wrld">Continets</option>   {/* //All */}
+                        <option value="Americas">Americas</option>
+                        <option value="Africa">Africa</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Antarctic">Antartic</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Oceania">Oceania</option>
+                    </select>
 
-                        <select onChange={e => handleAlphabet(e)} value={render.alpha}>
-                            <option selected disabled>Alphabetic</option>
-                            <option value="A-Z">A to Z</option>
-                            <option value="Z-A">Z to A</option>
-                        </select>
+                    <select onChange={e => handleActivity(e)} value={render.act} defaultValue="" >
+                        <option selected disabled>Activities</option>
+                        {activities.map(act => (
+                            <option key={act} value={act}>
+                                {act}
+                            </option>
+                        ))}
+                    </select>
 
-                        <select onChange={e => handlePop(e)} value={render.population}>
-                            <option selected disabled>Population</option>
-                            <option value="asc">Ascending</option>
-                            <option value="desc">Descending</option>
-                        </select>
-                    </div>
-                    {/* <div>
+                    <select onChange={e => handleAlphabet(e)} value={render.alpha} defaultValue="">
+                        <option selected disabled>Alphabetic</option>
+                        <option value="A-Z">A to Z</option>
+                        <option value="Z-A">Z to A</option>
+                    </select>
+
+                    <select onChange={e => handlePop(e)} value={render.population} defaultValue="">
+                        <option selected disabled>Population</option>
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </div>
+                {/* <div>
                     <button> Day/Night   </button>
                 </div> */}
 
-                    <div className={styles.createSection}>
-                        <Link className={styles.create} to='/activity'>
-                            Create Activity
-                        </Link>
+                <div className={styles.createSection}>
+                    <Link className={styles.create} to='/activity'>
+                        Create Activity
+                    </Link>
+                </div>
+            </nav>
+
+            <div className={styles.cardsContainer} >
+                {currCountries.length ? currCountries.map(c => (
+                    <div className={styles.card} key={c.id}>
+                        <CountryCard
+                            id={c.id}
+                            name={c.name}
+                            continent={c.continent}
+                            image={c.flag} />
                     </div>
-                </nav>
+                ))
+                    : <h2>Country not found</h2>
+                }
 
-                <div className={styles.cardsContainer} >
-                    {currCountries.length ? currCountries.map(c => (
-                        <div className={styles.card} key={c.id}>
-                            <CountryCard
-                                id={c.id}
-                                name={c.name}
-                                continent={c.continent}
-                                image={c.flag} />
-                        </div>
-                    ))
-                        : <h2>Country not found</h2>
-                    }
-
-                </div>
-                <div className={styles.title}>
-                    Page:  {currPage}
-                </div>
-
-                {/* // renderizo la paginacion */}
-
-                <Paging
-                    countriesOnPage={countriesOnPage}
-                    countries={countries.length}
-                    pages={pages}
-                    currPage={currPage}
-                />
             </div>
-        
+            <div className={styles.title}>
+                Page:  {currPage}
+            </div>
+
+            {/* // renderizo la paginacion */}
+
+            <Paging
+                countriesOnPage={countriesOnPage}
+                countries={countries.length}
+                pages={pages}
+                currPage={currPage}
+            />
+        </div>
+
     )
 }
 

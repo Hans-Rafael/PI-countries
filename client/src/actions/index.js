@@ -20,7 +20,7 @@ export const filterContinent = payload =>{
 export const getActivities = () =>{
     return async (dispatch)=>{
         try{
-        let json = await axios("http://localhost:3001/activity");
+        let json = await axios.get("http://localhost:3001/activity");
         return dispatch({
             type: "GET_ACT",
             payload: json.data
@@ -41,9 +41,10 @@ export const filterActivity = payload =>{
 export const postActivity = (form)=>{
     return async (dispatch)=>{
         const response = await axios.post('http://localhost:3001/activity', form);
+        
         return dispatch({
             type: 'POST_ACT',
-            payload: response
+            payload: response.data
         })
     }
 }
@@ -77,7 +78,7 @@ export const getName = (name) => {
 }
 
 
-export const getDetail = id =>{
+export const getDetail = (id) =>{
    // console.log('ESToy en GET Action DEtalil ', id);////
     return async dispatch =>{
         try {

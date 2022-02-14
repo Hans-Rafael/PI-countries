@@ -6,18 +6,23 @@ import { postActivity } from '../actions';
 import styles from './styles/Creater.module.css';
 import button from './styles/images/button.png';
 
+/*
+limpiaste el estado en el onsubmit? asi te lo deja libre
+                 O
+hace un redirect adonde quieras usando useNavigate */
 
  
-const validation = (input) => { // input es el estado local
+const validation = (input) => {
     let errors = {};
 //!/^.{3}$/ para nameID or !input.country.length >2 
     if (!input.name) {
         errors.name = 'Name is required';
-    } else if (!input.country.length  ) {//^[A-Z].{2,32}$
+    } else if (!input.countryId.length  ) {//^[A-Z].{2,32}$
         errors.country = 'Must choose at least one country!'
     }
 return errors;  
 }
+
 //////////// CReater function //////////////
 const Creater = () => {
    
@@ -34,11 +39,15 @@ const Creater = () => {
         name: "",
         difficulty: 0,
         duration: "",
-        country: []
+        season: "",
+        countryId:[],
+        //country: [],
     })
 
     const [error, setError] = useState({});
     const [success, setSuccess] = useState(false);
+
+    console.log('soy el input de creater: ', input);
 
     const handleChange = e => {
         setInput({
@@ -49,11 +58,11 @@ const Creater = () => {
         setError({});
     }
 
-    const handleCountries = e => {
-        if (!input.country.includes(e.target.value)) {
+    const handleCountries = (e) => {
+        if (!input.countryId.includes(e.target.value)) {
             setInput({
                 ...input,
-                country: [...input.country, e.target.value]
+                countryId: [...input.countryId, e.target.value]
             })
         }
     }
@@ -68,16 +77,15 @@ const Creater = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (input.name && input.difficulty && input.country.length) {
+        if (input.name && input.difficulty && input.countryId.length) {
             dispatch(postActivity(input));
             setSuccess(true);
-            //alert("Activity created!"); //No me gusta como queda con alert!
             setInput({
                 name: "",
                 difficulty: 0,
                 duration: "",
                 season: "---",
-                country: []
+                countryId: [],
             })
         } else {
             setError(validation({
@@ -85,7 +93,7 @@ const Creater = () => {
                 [e.target.name]: e.target.value
             }));
         }
-        //window.location.reload(); //queda mejor sin Refrescar la pagina en este caso
+
     }
 
     return (
@@ -149,12 +157,13 @@ const Creater = () => {
                     </select>
                 </div>
 
+                 
                 <div className={styles.countries}>
                     <label>Country/ies: </label>
-                    <select name="country" onChange={e => handleCountries(e)}>
+                    <select name="countryId" onChange={e => handleCountries(e)}>
                         <option selected disabled>---</option>
                         {countries.map(c => (
-                            <option key={c.id} value={c.name}>
+                            <option key={c.id} value={c.id}>
                                 {c.name}
                             </option>
                         ))}
@@ -162,9 +171,10 @@ const Creater = () => {
                 </div>
                 {error.country && <p className={styles.error}>{error.country}</p>}
 
+
                 <div className={styles.selectedCountries}>{
-                    input.country.length
-                        ? input.country.map(c => (
+                    input.countryId.length
+                        ? input.countryId.map(c => (
                             <div className={styles.selCountryCard} key={c}>
                                 <p>{c}</p>
                                 <span

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../actions';///3 nuevos
 //import {Creater} from './Creater';
 //import axios from 'axios';
+import{ActivityDetails} from './ActivityDetail';
 
 import styles from './styles/Details.module.css';
 import button from './styles/images/button.png';
@@ -48,15 +49,16 @@ const Details = () => {
             <h3>Area: {detail.area} Km2</h3>
             <h3>Population: {detail.population}</h3>
             <h3>Activities: </h3>
-            <ul>{detail.activities?.length ?
+            
+             <ul>{detail.activities?.length >0 ?
                 detail.activities.map(act => (
                     <li key={act.id}>
-                        {`${act.name} - `}
-                        {act.duration ? ` ${act.duration} - ` : null}
-                        {act.season ? ` ${act.season} - ` : null}
-                        Difficulty: {act.difficulty}
+                    Activity: {` ${act.name} - `}
+                    Duration: {act.duration ? ` ${act.duration} - ` : null}
+                    Season: {act.season ? ` ${act.season} - ` : null}
+                    Difficulty: {act.difficulty}
                     </li>
-                ))
+                )) 
                 : 'No activities for this country'
             }</ul>
         </div>
