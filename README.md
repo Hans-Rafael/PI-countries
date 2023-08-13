@@ -4,13 +4,30 @@
     <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
 </p>
 
-# <h1 align="center">Hi 👋,
+# <h1 align="center">Hi 👋, welcome to
 
 # Individual Project - tourist activities by countries
 
-<p align="left">
- ![Hi I´m Hans](https://github.com/Hans-Rafael/Hans-Rafael/blob/main/LinkedIn-Banner-7seg-gif.gif) 
-</p>
+__Landing page:__
+ <br>
+ ![landing](https://github.com/Hans-Rafael/PI-countries/blob/main/ScreenShots/LANDING.gif)
+ <br> 
+
+ __Home:__
+ <br>
+ ![landing](https://github.com/Hans-Rafael/PI-countries/blob/main/ScreenShots/home.png)
+
+ __Buscador Example:__
+ <br>
+ ![landing](https://github.com/Hans-Rafael/PI-countries/blob/main/ScreenShots/buscador.png)
+ 
+ __Detail of a country:__
+ <br>
+ ![landing](https://github.com/Hans-Rafael/PI-countries/blob/main/ScreenShots/detail.png)
+
+ __Form for new activities:__
+ <br>
+ ![landing](https://github.com/Hans-Rafael/PI-countries/blob/main/ScreenShots/form.png)
 
 ## Objetivos del Proyecto
 
