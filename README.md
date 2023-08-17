@@ -2,7 +2,7 @@
 
 # <h1 align="center">Hi 👋, welcome to
 
-# Individual Project - tourist activities by countries
+# Individual Project - Crea Actividades Globales
 
 __Landing page:__
  <br>
