@@ -34,7 +34,8 @@ __Landing page:__
 
 ## here is an Video example of the project.
 <br>
- _https://vimeo.com/manage/videos/736307289_
+ <b> https://vimeo.com/manage/videos/736307289 </b>
+<br>
 ## Comenzando
 
  1. Forkear el repositorio para tener una copia del mismo en sus cuentas
