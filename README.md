@@ -32,11 +32,6 @@ __Landing page:__
 - Practicar el workflow de GIT.
 - Usar y practicar testing.
 
-## here is an Video example of the project.
-<br>
- <b> 📽 https://vimeo.com/manage/videos/736307289  🎬</b>
-<br>
-<br>
 <br>
 <br>
 ## Comenzado
