@@ -34,9 +34,12 @@ __Landing page:__
 
 ## here is an Video example of the project.
 <br>
- <b> https://vimeo.com/manage/videos/736307289 </b>
+ <b> 📽 https://vimeo.com/manage/videos/736307289  🎬</b>
 <br>
-## Comenzando
+<br>
+<br>
+<br>
+## Comenzado
 
  1. Forkear el repositorio para tener una copia del mismo en sus cuentas
  2. Clonar el repositorio en sus computadoras para comenzar a trabajar
