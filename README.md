@@ -32,7 +32,9 @@ __Landing page:__
 - Practicar el workflow de GIT.
 - Usar y practicar testing.
 
-
+## here is an exapmle of the project.
+<br>
+ ![VimeoVideo](https://vimeo.com/manage/videos/736307289)
 ## Comenzando
 
  1. Forkear el repositorio para tener una copia del mismo en sus cuentas
